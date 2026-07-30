@@ -36,16 +36,25 @@
             color: #FFFFFF !important;
         }
         .drop-shadow-pink { filter: drop-shadow(0 0 8px rgba(244, 63, 94, 0.6)); }
+        
+        /* Animación de pulso para botón flotante */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(16, 201, 138, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(16, 201, 138, 0.8); }
+        }
+        .pulse-green { animation: pulse-glow 2s infinite; }
     </style>
 </head>
-<body class="bg-darkBg text-white antialiased overflow-x-hidden">
+<body class="bg-darkBg text-white antialiased overflow-x-hidden pb-20 md:pb-0">
 
-    <div class="bg-brandPink text-white text-center py-2.5 px-6 text-xs font-bold uppercase tracking-widest shadow-neon-pink z-50 relative">
-        🇨🇴 ENVÍO GRATIS + PAGO CONTRA ENTREGA EN TODA COLOMBIA ⚡ SÓLO ESTA SEMANA
+    <div class="bg-brandPink text-white text-center py-2 px-4 text-xs font-bold uppercase tracking-widest shadow-neon-pink z-50 relative flex flex-wrap items-center justify-center gap-2">
+        <span>🇨🇴 ENVÍO GRATIS + PAGO CONTRA ENTREGA</span>
+        <span class="hidden sm:inline">|</span>
+        <span class="bg-black/30 px-2 py-0.5 rounded text-[11px]">⏰ OFERTA EXPIRA EN: <span id="timer">04:23:12</span></span>
     </div>
 
-    <nav class="bg-darkBg/90 border-b border-white/5 sticky top-0 z-50 backdrop-blur-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-4">
+    <nav class="bg-darkBg/95 border-b border-white/5 sticky top-0 z-40 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
             <a href="#" class="flex items-center gap-2.5 group shrink-0">
                 <div class="w-9 h-9 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 group-hover:border-brandPink/60 transition duration-300 shadow-[0_0_15px_rgba(255,255,255,0.03)] group-hover:shadow-neon-pink">
                     <svg viewBox="0 0 100 100" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg">
@@ -55,105 +64,167 @@
                 </div>
                 <div class="flex flex-col">
                     <span class="font-extrabold text-xl tracking-tighter text-white leading-none group-hover:text-brandPink transition">AC INNOVASHOPS</span>
+                    <span class="text-[9px] text-gray-400 font-medium tracking-widest uppercase mt-0.5">Tienda Oficial Colombia</span>
                 </div>
             </a>
 
             <div class="hidden md:flex items-center gap-6 text-xs font-bold text-gray-300 tracking-tight uppercase">
-                <a href="#drops" class="hover:text-brandPink transition hover:drop-shadow-pink">Drops Semanales</a>
-                <a href="#tech" class="hover:text-white transition">Gadgets Tech</a>
-                <a href="#barberia" class="hover:text-brandPink transition">Barbería Pro</a>
+                <a href="#hero" class="hover:text-brandPink transition">Drop de la Semana</a>
+                <a href="#drops" class="hover:text-white transition">Catálogo Drops</a>
+                <a href="#testimonios" class="hover:text-brandPink transition">Reseñas</a>
             </div>
 
-            <div class="flex items-center gap-4 shrink-0">
-                <a href="https://wa.me/573182522941?text=Hola%20Kevin,%20quiero%20más%20información%20de%20los%20Drops" target="_blank" class="bg-acidGreen text-black px-4 py-1.5 rounded-full font-black text-xs uppercase tracking-wider hover:bg-white transition shadow-neon-green flex items-center gap-1.5">
-                    💬 WhatsApp
+            <div class="flex items-center gap-3 shrink-0">
+                <a href="https://wa.me/573182522941?text=Hola%20Kevin,%20quiero%20informaci%C3%B3n%20de%20los%20Drops" target="_blank" class="bg-acidGreen text-black px-4 py-1.5 rounded-full font-black text-xs uppercase tracking-wider hover:bg-white transition shadow-neon-green flex items-center gap-1.5">
+                    💬 <span class="hidden sm:inline">WhatsApp</span>
                 </a>
             </div>
         </div>
     </nav>
 
-    <header class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-white/5">
-        <div class="max-w-7xl mx-auto relative z-10 grid md:grid-cols-2 gap-12 items-center">
+    <header id="hero" class="py-12 md:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden border-b border-white/5">
+        <div class="max-w-7xl mx-auto relative z-10 grid md:grid-cols-2 gap-10 items-center">
             <div class="space-y-6 text-center md:text-left">
-                <span class="inline-block border border-brandPink text-brandPink px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest shadow-neon-pink">DROP EXCLUSIVO DE LA SEMANA</span>
+                <div class="inline-flex items-center gap-2 border border-brandPink text-brandPink px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-widest shadow-neon-pink">
+                    <span>🔥</span> DROP #1 MÁS VENDIDO EN COLOMBIA
+                </div>
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">Combo X8 <br> <span class="text-brandPink drop-shadow-pink">3-en-1 Ultra</span></h1>
-                <p class="text-base text-gray-300 max-w-lg mx-auto md:mx-0">Smartwatch 1.99" + Airpods 3ª Gen + Powerbank Magnética 5000mAh. Calidad garantizada en todo el país. ¡Pagas al recibir!</p>
+                <p class="text-sm sm:text-base text-gray-300 max-w-lg mx-auto md:mx-0">Smartwatch 1.99" + Airpods 3ª Gen + Powerbank Magnética 5000mAh. Incluye envío gratis y garantía directa.</p>
                 
-                <div class="bg-darkCard/80 p-4 rounded-2xl border border-white/10 max-w-md mx-auto md:mx-0 flex items-center justify-between shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+                <div class="bg-darkCard/90 p-4 rounded-2xl border border-white/10 max-w-md mx-auto md:mx-0 flex items-center justify-between shadow-[0_0_20px_rgba(0,0,0,0.5)]">
                     <div>
                         <span class="text-xs text-gray-500 line-through">$220.000 COP</span>
                         <span class="text-2xl font-black text-white block">$139.900 COP</span>
+                        <span class="text-[10px] text-brandPink font-bold">¡Ahorras $80.100 hoy!</span>
                     </div>
-                    <span class="bg-white/10 text-acidGreen text-xs px-3 py-1.5 rounded-lg font-bold border border-acidGreen/30">Pagas en Casa</span>
+                    <span class="bg-acidGreen/10 text-acidGreen text-xs px-3 py-1.5 rounded-lg font-bold border border-acidGreen/30">Pago Contra Entrega</span>
                 </div>
 
                 <div class="pt-2">
-                    <a href="https://wa.me/573182522941?text=Hola%20Kevin,%20quiero%20pedir%20el%20Combo%20X8%203-en-1%20Ultra%20por%20$139.900" target="_blank" class="inline-block w-full sm:w-auto bg-acidGreen text-black text-center px-10 py-4 rounded-full font-black text-sm uppercase tracking-wider hover:bg-white transition duration-300 shadow-neon-green">
-                        💬 Pedir Drop Contra Entrega
+                    <a href="https://wa.me/573182522941?text=Hola%20Kevin,%20quiero%20pedir%20el%20Combo%20X8%203-en-1%20Ultra%20por%20$139.900" target="_blank" class="inline-block w-full sm:w-auto bg-acidGreen text-black text-center px-8 py-4 rounded-full font-black text-sm uppercase tracking-wider hover:bg-white transition duration-300 shadow-neon-green pulse-green">
+                        💬 Pedir Combo por WhatsApp →
                     </a>
                 </div>
             </div>
 
             <div class="bg-darkCard p-3 rounded-3xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.8)] relative group">
                 <img src="https://lh3.googleusercontent.com/d/1FzZyd9xTk-6DutBow48qdPgsa6OYhh8m" alt="Combo X8 3 en 1" class="w-full h-auto rounded-2xl object-cover border border-white/5 shadow-2xl">
+                <div class="absolute top-5 right-5 bg-brandPink text-white text-xs font-black px-3 py-1 rounded-full shadow-neon-pink uppercase">
+                    Últimas 8 Unidades
+                </div>
             </div>
         </div>
     </header>
 
     <section id="drops" class="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-darkBg">
         <div class="max-w-7xl mx-auto relative z-10">
-            <div class="flex items-center gap-3 mb-10 border-b border-white/10 pb-4">
-                <span class="text-2xl">🧢</span>
-                <h2 class="text-3xl font-extrabold tracking-tight text-white uppercase">Streetwear & Barber Drops</h2>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 border-b border-white/10 pb-4">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white uppercase flex items-center gap-2">
+                        <span>🧢</span> Catálogo Streetwear & Tech
+                    </h2>
+                    <p class="text-xs text-gray-400 mt-1">Selecciona tu producto favorito y confirma tu pedido contra entrega en segundos.</p>
+                </div>
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-                <div class="bg-darkCard rounded-3xl border border-white/5 p-3 flex flex-col group hover:border-brandPink/40 transition duration-300">
+                
+                <div class="bg-darkCard rounded-3xl border border-white/5 p-3 flex flex-col group hover:border-brandPink/40 transition duration-300 relative overflow-hidden shadow-lg">
                     <div class="aspect-square rounded-2xl mb-3 overflow-hidden bg-black border border-white/5">
-                        <img src="https://lh3.googleusercontent.com/d/1c29euLZRyA_P3ID2RfiHwp9U5JKH-cMe" alt="Gorra New Era" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <img src="https://lh3.googleusercontent.com/d/1c29euLZRyA_P3ID2RfiHwp9U5JKH-cMe" alt="Gorra New Era Camel" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
-                    <h4 class="font-bold text-sm text-white mb-1">Gorra New Era Camel</h4>
-                    <p class="text-[11px] text-gray-400 mb-3 flex-grow">Edición Especial Navy / Camel</p>
-                    <div class="flex flex-col sm:flex-row items-center gap-2 mt-auto">
-                        <span class="text-base font-black text-white">$74.900</span>
-                        <a href="https://wa.me/573182522941?text=Hola%20Kevin,%20quiero%20comprar%20la%20Gorra%20New%20Era%20Premium%20por%20$74.900" target="_blank" class="w-full text-center bg-acidGreen text-black px-3 py-1 rounded-full font-bold text-xs hover:bg-white transition">Pedir</a>
+                    <span class="text-[9px] font-black text-brandPink uppercase tracking-wider mb-1">Stock Disponible</span>
+                    <h3 class="font-bold text-sm text-white mb-1">Gorra New Era Camel</h3>
+                    <p class="text-[11px] text-gray-400 mb-3 flex-grow">Edición Especial Navy / Camel 1A</p>
+                    <div class="flex flex-col gap-2 mt-auto pt-2 border-t border-white/5">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500 line-through">$110.000</span>
+                            <span class="text-base font-black text-white">$74.900</span>
+                        </div>
+                        <a href="https://wa.me/573182522941?text=Hola%20Kevin,%20quiero%20comprar%20la%20Gorra%20New%20Era%20Camel%20por%20$74.900" target="_blank" class="w-full text-center bg-acidGreen text-black px-3 py-2 rounded-full font-bold text-xs hover:bg-white transition">
+                            💬 Pedir por WhatsApp
+                        </a>
                     </div>
                 </div>
 
-                <div class="bg-darkCard rounded-3xl border border-white/5 p-3 flex flex-col group hover:border-brandPink/40 transition duration-300">
+                <div class="bg-darkCard rounded-3xl border border-white/5 p-3 flex flex-col group hover:border-brandPink/40 transition duration-300 relative overflow-hidden shadow-lg">
                     <div class="aspect-square rounded-2xl mb-3 overflow-hidden bg-black border border-white/5">
-                        <img src="https://lh3.googleusercontent.com/d/1dvyTTMjX-00NPfIK3U8SvnY7ffV63p9X" alt="Gorra Nike Black" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <img src="https://lh3.googleusercontent.com/d/1dvyTTMjX-00NPfIK3U8SvnY7ffV63p9X" alt="Gorra Nike Dri-Fit Black" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
-                    <h4 class="font-bold text-sm text-white mb-1">Gorra Nike Dri-Fit Black</h4>
-                    <p class="text-[11px] text-gray-400 mb-3 flex-grow">Ajuste deportivo transpirable</p>
-                    <div class="flex flex-col sm:flex-row items-center gap-2 mt-auto">
-                        <span class="text-base font-black text-white">$69.900</span>
-                        <a href="https://wa.me/573182522941?text=Hola%20Kevin,%20quiero%20comprar%20la%20Gorra%20Nike%20Dri-Fit%20Black%20por%20$69.900" target="_blank" class="w-full text-center bg-acidGreen text-black px-3 py-1 rounded-full font-bold text-xs hover:bg-white transition">Pedir</a>
+                    <span class="text-[9px] font-black text-brandPink uppercase tracking-wider mb-1">Stock Disponible</span>
+                    <h3 class="font-bold text-sm text-white mb-1">Gorra Nike Dri-Fit Black</h3>
+                    <p class="text-[11px] text-gray-400 mb-3 flex-grow">Ajuste deportivo transpirable 1A</p>
+                    <div class="flex flex-col gap-2 mt-auto pt-2 border-t border-white/5">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500 line-through">$95.000</span>
+                            <span class="text-base font-black text-white">$69.900</span>
+                        </div>
+                        <a href="https://wa.me/573182522941?text=Hola%20Kevin,%20quiero%20comprar%20la%20Gorra%20Nike%20Dri-Fit%20Black%20por%20$69.900" target="_blank" class="w-full text-center bg-acidGreen text-black px-3 py-2 rounded-full font-bold text-xs hover:bg-white transition">
+                            💬 Pedir por WhatsApp
+                        </a>
                     </div>
                 </div>
 
-                <div class="bg-darkCard rounded-3xl border border-white/5 p-3 flex flex-col group hover:border-brandPink/40 transition duration-300">
+                <div class="bg-darkCard rounded-3xl border border-white/5 p-3 flex flex-col group hover:border-brandPink/40 transition duration-300 relative overflow-hidden shadow-lg">
                     <div class="aspect-square rounded-2xl mb-3 overflow-hidden bg-black border border-white/5">
-                        <img src="https://lh3.googleusercontent.com/d/117KaXJTzMDoU-RX6xk9mZ9eMX-CaJKH3" alt="Gorra Nike Heritage" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <img src="https://lh3.googleusercontent.com/d/117KaXJTzMDoU-RX6xk9mZ9eMX-CaJKH3" alt="Gorra Nike Heritage Curve" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
-                    <h4 class="font-bold text-sm text-white mb-1">Gorra Nike Heritage Curve</h4>
-                    <p class="text-[11px] text-gray-400 mb-3 flex-grow">Edición Grey / Orange Logo</p>
-                    <div class="flex flex-col sm:flex-row items-center gap-2 mt-auto">
-                        <span class="text-base font-black text-white">$69.900</span>
-                        <a href="https://wa.me/573182522941?text=Hola%20Kevin,%20quiero%20comprar%20la%20Gorra%20Nike%20Heritage%20Curve%20por%20$69.900" target="_blank" class="w-full text-center bg-acidGreen text-black px-3 py-1 rounded-full font-bold text-xs hover:bg-white transition">Pedir</a>
+                    <span class="text-[9px] font-black text-brandPink uppercase tracking-wider mb-1">Stock Disponible</span>
+                    <h3 class="font-bold text-sm text-white mb-1">Gorra Nike Heritage Grey</h3>
+                    <p class="text-[11px] text-gray-400 mb-3 flex-grow">Edición Grey / Orange Logo 1A</p>
+                    <div class="flex flex-col gap-2 mt-auto pt-2 border-t border-white/5">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500 line-through">$95.000</span>
+                            <span class="text-base font-black text-white">$69.900</span>
+                        </div>
+                        <a href="https://wa.me/573182522941?text=Hola%20Kevin,%20quiero%20comprar%20la%20Gorra%20Nike%20Heritage%20Grey%20por%20$69.900" target="_blank" class="w-full text-center bg-acidGreen text-black px-3 py-2 rounded-full font-bold text-xs hover:bg-white transition">
+                            💬 Pedir por WhatsApp
+                        </a>
                     </div>
                 </div>
 
-                <div class="bg-darkCard rounded-3xl border border-white/5 p-3 flex flex-col group hover:border-brandPink/40 transition duration-300">
+                <div class="bg-darkCard rounded-3xl border border-white/5 p-3 flex flex-col group hover:border-brandPink/40 transition duration-300 relative overflow-hidden shadow-lg">
                     <div class="aspect-square rounded-2xl mb-3 overflow-hidden bg-black border border-white/5">
-                        <img src="https://lh3.googleusercontent.com/d/1PNrpomgFe-q2V9-SWl8ZrIysunReVefj" alt="Kit Barbería" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <img src="https://lh3.googleusercontent.com/d/1PNrpomgFe-q2V9-SWl8ZrIysunReVefj" alt="Kit Patillera & Barbería" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
-                    <h4 class="font-bold text-sm text-white mb-1">Kit Patillera Profesional</h4>
+                    <span class="text-[9px] font-black text-acidGreen uppercase tracking-wider mb-1">Barbería Pro</span>
+                    <h3 class="font-bold text-sm text-white mb-1">Kit Patillera Profesional</h3>
                     <p class="text-[11px] text-gray-400 mb-3 flex-grow">Motor potente corte 0mm preciso</p>
-                    <div class="flex flex-col sm:flex-row items-center gap-2 mt-auto">
-                        <span class="text-base font-black text-white">$149.900</span>
-                        <a href="https://wa.me/573182522941?text=Hola%20Kevin,%20quiero%20comprar%20el%20Kit%20Patillera%20%26%20Barber%C3%ADa%20por%20$149.900" target="_blank" class="w-full text-center bg-acidGreen text-black px-3 py-1 rounded-full font-bold text-xs hover:bg-white transition">Pedir</a>
+                    <div class="flex flex-col gap-2 mt-auto pt-2 border-t border-white/5">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500 line-through">$210.000</span>
+                            <span class="text-base font-black text-white">$149.900</span>
+                        </div>
+                        <a href="https://wa.me/573182522941?text=Hola%20Kevin,%20quiero%20comprar%20el%20Kit%20Patillera%20Profesional%20por%20$149.900" target="_blank" class="w-full text-center bg-acidGreen text-black px-3 py-2 rounded-full font-bold text-xs hover:bg-white transition">
+                            💬 Pedir por WhatsApp
+                        </a>
                     </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonios" class="py-12 px-4 sm:px-6 lg:px-8 bg-darkCard/40 border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-xl font-black uppercase text-center text-white mb-8 tracking-wider">
+                ⭐ Clientes Satisfechos en Colombia ⭐
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-gray-300">
+                <div class="bg-darkCard p-4 rounded-2xl border border-white/5 space-y-2">
+                    <div class="text-yellow-400 font-bold">⭐⭐⭐⭐⭐</div>
+                    <p>"Llegó súper rápido a Bogotá. Pagué cuando el repartidor me entregó la caja. El combo X8 viene completísimo y de excelente calidad."</p>
+                    <p class="text-gray-500 font-bold">— Mateo R. (Bogotá D.C.)</p>
+                </div>
+                <div class="bg-darkCard p-4 rounded-2xl border border-white/5 space-y-2">
+                    <div class="text-yellow-400 font-bold">⭐⭐⭐⭐⭐</div>
+                    <p>"La gorra New Era Camel está 10/10. La atención de Kevin por WhatsApp fue rápida y muy atenta. Recomendados 100%."</p>
+                    <p class="text-gray-500 font-bold">— Carlos M. (Medellín)</p>
+                </div>
+                <div class="bg-darkCard p-4 rounded-2xl border border-white/5 space-y-2">
+                    <div class="text-yellow-400 font-bold">⭐⭐⭐⭐⭐</div>
+                    <p>"Pedí la patillera para mi barbería en Bucaramanga. Corta al ras perfecto. Da mucha seguridad pagar contra entrega."</p>
+                    <p class="text-gray-500 font-bold">— Andrés F. (Bucaramanga)</p>
                 </div>
             </div>
         </div>
@@ -161,11 +232,57 @@
 
     <footer class="bg-darkCard border-t border-white/5 py-10 px-6 text-gray-400 text-xs text-center">
         <div class="max-w-7xl mx-auto space-y-4">
-            <p class="font-extrabold text-lg text-white tracking-wider uppercase">AC INNOVASHOPS</p>
-            <p>Envíos garantizados Pago Contra Entrega en Toda Colombia.</p>
+            <div class="flex items-center justify-center gap-2">
+                <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 border border-white/10">
+                    <svg viewBox="0 0 100 100" class="w-5 h-5 text-brandPink fill-current" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 80 L50 20 L80 80 H65 L57 60 H43 L35 80 Z"/> 
+                        <path d="M50 20 C65 20 80 35 80 50 C80 65 65 80 50 80 C35 80 20 65 20 50 C20 35 35 20 50 20" stroke="white" stroke-width="7" fill="none"/>
+                    </svg>
+                </div>
+                <span class="font-extrabold text-lg text-white tracking-wider uppercase">AC INNOVASHOPS</span>
+            </div>
+            <p>Envíos garantizados con Pago Contra Entrega en Toda Colombia 🇨🇴</p>
             <p class="text-gray-600">© 2024 AC INNOVASHOPS. Andrés Caicedo & Kevin Alejandro Caicedo.</p>
         </div>
     </footer>
 
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-darkCard/95 border-t border-white/10 p-3 z-50 backdrop-blur-lg flex items-center justify-between gap-3 shadow-2xl">
+        <div class="flex flex-col">
+            <span class="text-[10px] text-brandPink font-black uppercase">DROP DESTACADO</span>
+            <span class="text-xs font-bold text-white truncate max-w-[140px]">Combo X8 Ultra 3-en-1</span>
+            <span class="text-sm font-black text-acidGreen">$139.900</span>
+        </div>
+        <a href="https://wa.me/573182522941?text=Hola%20Kevin,%20quiero%20aprovechar%20la%20oferta%20del%20Combo%20X8%20por%20$139.900" target="_blank" class="bg-acidGreen text-black px-4 py-2.5 rounded-full font-black text-xs uppercase tracking-wider shadow-neon-green text-center flex-1">
+            💬 Pedir Ahora
+        </a>
+    </div>
+
+    <script>
+        function startTimer(duration, display) {
+            var timer = duration, hours, minutes, seconds;
+            setInterval(function () {
+                hours = parseInt(timer / 3600, 10);
+                minutes = parseInt((timer % 3600) / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = hours + ":" + minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = duration;
+                }
+            }, 1000);
+        }
+        window.onload = function () {
+            var fourHours = 60 * 60 * 4 + 23 * 60 + 12;
+            var display = document.querySelector('#timer');
+            if (display) {
+                startTimer(fourHours, display);
+            }
+        };
+    </script>
 </body>
 </html>
